@@ -1,0 +1,10 @@
+#wrapper {
+    background: red;
+  }
+  #content {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background: yellow;
+  }
+  
