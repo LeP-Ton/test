@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://gist.githack.com/LeP-Ton/bed3dd90df9ebc6476bdd47aa2172b9f/raw/54e0abd551d97caf1de0cf2410426f2966e36c8d/tips.css">
+    <link rel="stylesheet" href="test.css">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <h1>例1:</h1> -->
+<case data-text="使用margin属性对齐按钮">
+    <step data-text="我们定义了一个背景为黄色的div，其中有一个按钮，为了让按钮在黄色容器中右对齐，于是我们使用了margin-left:auto，但是按钮并没有右对齐，这是因为按钮默认为inline-block元素，而margin-left:auto对内联和块级内联元素不起作用">
+      <test>
+        <div class="button-wrapper">
+          <button>按钮</button>
+        </div>
+      </test>
+    </step>
+    <step data-text="将按钮的display改成block就可以使按钮右对齐了">
+      <test>
+        <div class="button-wrapper">
+          <button>按钮</button>
+        </div>
+      </test>
+    </step>
+    <step data-text="如果我们把margin-left:auto修改成margin:auto或者margin:0 auto就可以使按钮水平居中了">
+      <test>
+        <div class="button-wrapper">
+          <button>按钮</button>
+        </div>
+      </test>
+    </step>
+    <step data-text="但是我们无法使用margin将按钮垂直方向对齐，比如我们设置margin-top:auto，结果并没有变化">
+      <test>
+        <div class="button-wrapper">
+          <button>按钮</button>
+        </div>
+      </test>
+    </step>
+  </case>
+  <case data-text="在flex容器中使用margin属性对齐按钮">
+    <step data-text="在例1中，我们对按钮设置margin:auto;display:block只可以使按钮水平对齐，但是如果黄色容器的display设置为flex后我们可以做到更多，首先我们这时已经可以去掉按钮的display:block了。没错，即使目标元素不是块级元素现在也可以使用margin对齐，比如我们设置一个margin-left:auto就实现了按钮向右对齐">
+      <test>
+        <div class="button-wrapper">
+          <button>按钮</button>
+        </div>
+      </test>
+    </step>
+    <step data-text="还可以设置margin-top:auto向下对齐按钮">
+      <test>
+        <div class="button-wrapper">
+          <button>按钮</button>
+        </div>
+      </test>
+    </step>
+    <step data-text="清除掉margin的设置，重新设置为margin:auto,我们就可以让按钮完全居中了">
+      <test>
+        <div class="button-wrapper">
+          <button>按钮</button>
+        </div>
+      </test>
+    </step>
+  </case>
+</body>
+</html>

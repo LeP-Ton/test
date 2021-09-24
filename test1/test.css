@@ -1,0 +1,40 @@
+.button-wrapper {
+    background: yellow;
+    width: 300px;
+    height: 100px;
+  }
+  button {
+    width: 100px;
+    height: 50px;
+  }
+  case:nth-child(1) step:nth-child(1) button {
+    margin-left: auto;
+  }
+  case:nth-child(1) step:nth-child(2) button {
+    margin-left: auto;
+    display: block;
+  }
+  case:nth-child(1) step:nth-child(3) button {
+    margin: auto;
+    display: block;
+  }
+  case:nth-child(1) step:nth-child(4) button {
+    margin: auto;
+    margin-top: auto;
+    display: block;
+  }
+  
+  case:nth-child(2) .button-wrapper {
+    display: flex;
+  }
+  case:nth-child(2) step:nth-child(1) button {
+    margin-left: auto;
+  }
+  case:nth-child(2) step:nth-child(2) button {
+    margin-left: auto;
+    margin-top: auto;
+  }
+  case:nth-child(2) step:nth-child(3) button {
+    margin: auto;
+  }
+  
