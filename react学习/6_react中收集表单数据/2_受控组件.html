@@ -1,0 +1,42 @@
+<html>
+  <div id="test"></div>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script type="text/babel">
+    class Demo extends React.Component {
+      state = {
+        username: "",
+        password: "",
+      };
+      render() {
+        return (
+          <form onSubmit={this.handleSubmit}>
+            <input
+              type="text"
+              placeholder="用户名"
+              onChange={this.saveUsername}
+            />
+            <input
+              type="text"
+              placeholder="密码"
+              onChange={this.savePassword}
+            />
+            <button>提交</button>
+          </form>
+        );
+      }
+      saveUsername = (event) => {
+        this.setState({ username: event.target.value });
+      };
+      savePassword = (event) => {
+        this.setState({ password: event.target.value });
+      };
+      handleSubmit = (event) => {
+        event.preventDefault();
+        alert(`用户名:${this.state.username}`);
+      };
+    }
+    ReactDOM.render(<Demo />, document.getElementById("test"));
+  </script>
+</html>

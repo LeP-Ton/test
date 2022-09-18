@@ -1,0 +1,32 @@
+<html>
+  <div id="test"></div>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script type="text/babel">
+    class Weather extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = { isHot: false, wind: "微风" };
+        // 解决changeWeather中this指向问题
+        this.changeWeather = this.changeWeather.bind(this);
+      }
+      changeWeather() {
+        // 该函数放在类的原型对象上，供实例使用
+        // 由于该函数作为onClick的回调，所以不是通过实例调用的而是直接调用
+        // 又由于类中的方法默认开启了严格模式，所以该函数中的this是undefined
+        console.log("this--", this);
+        this.setState({ isHot: !this.state.isHot });
+      }
+      render() {
+        const { ...state } = this.state;
+        return (
+          <h1 onClick={this.changeWeather}>
+            今天天气很{state.isHot ? "炎热" : "凉爽"}，{state.wind}
+          </h1>
+        );
+      }
+    }
+    ReactDOM.render(<Weather />, document.getElementById("test"));
+  </script>
+</html>

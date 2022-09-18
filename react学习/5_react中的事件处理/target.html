@@ -1,0 +1,40 @@
+<html>
+  <div id="test"></div>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script type="text/babel">
+    class Demo extends React.Component {
+      myRef = React.createRef();
+      myRef2 = React.createRef();
+      showData = () => {
+        console.log(this.myRef);
+        alert(this.myRef.current.value);
+      };
+      showData2 = (event) => {
+        alert(event.target.value);
+      };
+      render() {
+        return (
+          <div>
+            // 通过ref进行事件操作
+            <input
+              ref={this.myRef}
+              type="text"
+              placeholder="点击按钮提示数据"
+            />
+            <button onClick={this.showData}>点击提示左侧数据</button>
+            //不通过ref进行事件操作
+            <input
+              onBlur={this.showData2}
+              type="text"
+              placeholder="失去焦点提示数据"
+            />
+          </div>
+        );
+      }
+      
+    }
+    ReactDOM.render(<Demo />, document.getElementById("test"));
+  </script>
+</html>

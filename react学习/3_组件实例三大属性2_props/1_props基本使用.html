@@ -1,0 +1,38 @@
+<html>
+  <div id="test"></div>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script type="text/babel">
+    class Weather extends React.Component {
+      constructor(props) {
+        // 构造器是否接收props且传递给super取决于是否希望在构造器中通过this访问props
+        super(props);
+        console.log(
+          "-1-",
+          props,
+          "-2-",
+          this.props,
+          "-3-",
+          props === this.props
+        );
+      }
+      state = { isHot: this.props.isHot, wind: this.props.wind };
+      changeWeather = () => {
+        // 箭头函数中的this指向和外层相同
+        console.log("this--", this);
+        this.setState({ isHot: !this.state.isHot });
+      };
+      render() {
+        const { ...state } = this.state;
+        return (
+          <h1 onClick={this.changeWeather}>
+            今天天气很{state.isHot ? "炎热" : "凉爽"}，{state.wind}，{this.props.rain}
+          </h1>
+        );
+      }
+    }
+    const obj = { isHot: false, wind: "微风" };
+    ReactDOM.render(<Weather {...obj} rain='小雨'/>, document.getElementById("test"));
+  </script>
+</html>
