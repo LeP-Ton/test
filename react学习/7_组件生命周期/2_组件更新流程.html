@@ -1,0 +1,62 @@
+<html>
+  <div id="test"></div>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script type="text/babel">
+    class Demo extends React.Component {
+      constructor(props) {
+        console.log("调用constructor");
+        super(props);
+        this.state = { count: 0 };
+      }
+      // 组件将要挂载
+      componentWillMount() {
+        console.log("调用componnetWillMount");
+      }
+      // 组件已经挂载
+      componentDidMount() {
+        console.log("调用componentDidMount");
+      }
+      // 组件是否需要更新
+      shouldComponentUpdate(){
+        console.log("调用shouldComponentUpdate");
+        return true
+      }
+      // 组件将要更新
+      componentWillUpdate(){
+        console.log("调用componentWillUpdate");
+      }
+      // 组件已经更新
+      componentDidUpdate(){
+        console.log("调用componentDidUpdate");
+      }
+      // 组件将要卸载
+      componentWillUnmount() {
+        console.log("调用componnetWillUnmount");
+      }
+      add = () => {
+        const { count } = this.state;
+        this.setState({ count: count + 1 });
+      };
+      unmountC = () => {
+        ReactDOM.unmountComponentAtNode(document.getElementById("test"));
+      };
+      render() {
+        console.log("调用render");
+        return (
+          <div>
+            <h1>当前和为：{this.state.count}</h1>
+            <button onClick={this.add}>点我+1</button>
+            <button onClick={this.unmountC}>点我卸载组件</button>
+          </div>
+        );
+      }
+      handleSubmit = (event) => {
+        event.preventDefault();
+        alert(`用户名:${this.username.value}`);
+      };
+    }
+    ReactDOM.render(<Demo />, document.getElementById("test"));
+  </script>
+</html>
